@@ -35,10 +35,6 @@ export default function Simulation() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.dataset]);
 
-  useEffect(() => {
-    logEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [logs]);
-
   const loadPreview = async () => {
     try {
       setError(null);
