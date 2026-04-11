@@ -12,8 +12,8 @@ import asyncio
 from model import CIFAR10_CNN
 
 # Use a subset so the live simulation doesn't take forever
-SUBSET_TRAIN_SIZE = 1000
-SUBSET_TEST_SIZE = 200
+SUBSET_TRAIN_SIZE = 10000   # Increased from 1000 to 10000 (20% of training data)
+SUBSET_TEST_SIZE = 2000     # Increased from 200 to 2000 (20% of test data)
 
 # Cache the dataset in memory to avoid slow disk read during simulation run
 _trainset = None
@@ -46,7 +46,7 @@ async def run_simulation(config):
     solver = config.get("solver", "adam").lower()
     alpha = config.get("alpha", 0.0001)           # Weight Decay
     batch_size = config.get("batch_size", 32)
-    epochs = config.get("epochs", 15)
+    epochs = config.get("epochs", 30)  # Increased from 15 to 30 for better convergence
     lr = config.get("learning_rate", 0.001)
 
     yield json.dumps({'type': 'log', 'message': f'Initializing {model_capacity} Capacity CNN on CIFAR-10'})
