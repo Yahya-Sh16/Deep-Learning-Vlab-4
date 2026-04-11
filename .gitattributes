@@ -1,6 +1,8 @@
 # Git LFS configuration for large files
 *.tar.gz filter=lfs diff=lfs merge=lfs -text
-dataset/** filter=lfs diff=lfs merge=lfs -text
+**/data_batch_* filter=lfs diff=lfs merge=lfs -text
+**/test_batch filter=lfs diff=lfs merge=lfs -text
+**/batches.meta filter=lfs diff=lfs merge=lfs -text
 dataset/*.tar.gz filter=lfs diff=lfs merge=lfs -text
 dataset/**/*_batch* filter=lfs diff=lfs merge=lfs -text
 dataset/**/batches.meta filter=lfs diff=lfs merge=lfs -text
