@@ -43,6 +43,11 @@ def preview_dataset(dataset: str = "cifar-10", count: int = 16):
         
     return {"samples": samples}
 
+@app.get("/api/dataset/preview")
+def preview_dataset_alias(name: str = "cifar-10", n: int = 16):
+    """Alias for /preview to support legacy frontend routes"""
+    return preview_dataset(dataset=name, count=n)
+
 @app.post("/simulate")
 async def simulate(request: Request):
     """

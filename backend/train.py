@@ -125,11 +125,22 @@ async def run_simulation(config):
     # Simulated Evaluation
     cm = np.zeros((10, 10), dtype=int)
     for i in range(10):
-        cm[i, i] = int(200 * val_acc_curve[-1])  
-        remaining = 200 - cm[i, i]
-        for j in range(10):
-            if i != j:
-                cm[i, j] = remaining // 9
+        correct = int(200 * (val_acc_curve[-1] + np.random.normal(0, 0.02)))
+        correct = max(0, min(200, correct))
+        cm[i, i] = correct
+        remaining = 200 - correct
+        
+        if remaining > 0:
+            probs = np.random.rand(9)
+            probs[np.random.randint(0, 9)] *= 4.0  # Create a confusion hotspot
+            probs /= probs.sum()
+            errors = np.random.multinomial(remaining, probs)
+            
+            idx = 0
+            for j in range(10):
+                if i != j:
+                    cm[i, j] = errors[idx]
+                    idx += 1
                 
     sandbox_samples = []
     

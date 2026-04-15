@@ -60,7 +60,6 @@ Ensure you have the following installed:
    ```bash
    pip install -r requirements.txt
    ```
-   *(We recommend doing this inside a virtual environment!)*
 3. Run the FastAPI server:
    ```bash
    python app.py

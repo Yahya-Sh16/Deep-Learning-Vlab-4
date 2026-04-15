@@ -400,6 +400,7 @@ export default function Simulation() {
                 type: "heatmap",
                 colorscale: [[0, "white"], [1, "#3399cc"]],
                 showscale: true,
+                texttemplate: "%{z}",
               }]}
               layout={{
                 autosize: true,
